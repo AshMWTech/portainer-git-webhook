@@ -66,7 +66,8 @@ const express = require('express');
     res.json({ message: 'Stack updated', hash: redeployed.GitConfig.ConfigHash });
   });
 
-  app.listen(9059, () => {
-    console.log('Server is running on port 9059');
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
   });
 })();
