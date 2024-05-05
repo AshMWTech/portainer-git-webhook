@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: './Dockerfile'
+      args:
+        - NPM_TOKEN=$NPM_TOKEN
+    network_mode: bridge
+    ports:
+      - '9015:3000'
+    environment:
+      PORTAINER_BASE_URL: ${PORTAINER_BASE_URL} # "https://portainer.example.com"
+      PORTAINER_API_KEY: ${PORTAINER_API_KEY} # "ptr_your-apigoeskey/here"
