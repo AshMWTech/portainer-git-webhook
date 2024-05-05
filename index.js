@@ -49,7 +49,7 @@ const express = require('express');
 
   app.post('/webhook', async (req, res) => {
     if (req.headers['content-type'] !== 'application/json') return res.status(415).send('Unsupported Media Type');
-    const stack = stacks.find(stack => stack.GitConfig.URL === req.body.repository.url || stack.GitConfig.URL === req.body.repository.clone_url);
+    const stack = stacks.find(stack => stack.GitConfig.URL === req.body.repository.svn_url || stack.GitConfig.URL === req.body.repository.clone_url);
     if (!stack) return res.status(404).send('No stack found for this repository');
     const githubEvent = req.headers['x-github-event'];
     if (githubEvent == 'ping') return res.status(200).send('Pong!');
