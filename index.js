@@ -15,10 +15,11 @@ const express = require('express');
   setInterval(() => endpoint('/stacks').then(response => response.json()).then((d) => (stack = d)), 15_000);
 
   app.get('/', (req, res) => {
-    res.json(stacks.map(stack => {
+    if (process.env.NODE_ENV !== 'production') res.json(stacks.map(stack => {
       delete stack.Env;
       return stack;
-    }))
+    }));
+    else res.send('Hello World! There is nothing to see here.');
   });
 
   async function updateStack(stackId) {
@@ -61,6 +62,7 @@ const express = require('express');
   });
 
   app.get('/update/:id', async (req, res) => {
+    if (process.env.NODE_ENV == 'production') return res.status(403).json({ error: 'Forbidden' });
     const { error, redeployed } = await updateStack(req.params.id);
     if (error) return res.status(404).json({ error });
     res.json({ message: 'Stack updated', hash: redeployed.GitConfig.ConfigHash });
