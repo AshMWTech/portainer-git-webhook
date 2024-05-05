@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: './Dockerfile'
-      args:
-        - NPM_TOKEN=$NPM_TOKEN
     network_mode: bridge
     ports:
       - '9015:3000'
