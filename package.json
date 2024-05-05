@@ -5,5 +5,28 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-  }
+  },
+  "name": "portainer-gitops-better",
+  "description": "This is a very basic auto-updater for portainer stacks. You are able to run this within the portainer instance too.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "echo \"No build script specified\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portainer",
+    "docker",
+    "gitops",
+    "auto-updater",
+    "portainer-stack",
+    "portainer-stack-updater",
+    "webhook",
+    "github-webhook",
+    "portainer-webhook"
+  ],
+  "author": "DanPlayz0",
+  "license": "MIT"
 }
