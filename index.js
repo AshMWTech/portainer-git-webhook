@@ -12,7 +12,7 @@ const express = require('express');
   }
 
   let stacks = await endpoint('/stacks').then(response => response.json());
-  setInterval(() => endpoint('/stacks').then(response => response.json()).then((d) => (stack = d)), 15_000);
+  setInterval(() => endpoint('/stacks').then(response => response.json()).then((d) => (stacks = d)), 15_000);
 
   app.get('/', (req, res) => {
     if (process.env.NODE_ENV !== 'production') res.json(stacks.map(stack => {
